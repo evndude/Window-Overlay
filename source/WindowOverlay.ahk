@@ -1,6 +1,8 @@
 ;##############################################################################################
 ;
-; Window Overlay v1.0 	by Evan Casey
+; Window Overlay
+; 
+; by Evan Casey
 ;
 ; This AutoHotKey script turns a window into an overlay by making it always on top of other windows,
 ; with options for mouse click-through, transparency, and maintaining its size and position.
@@ -40,7 +42,8 @@ OnMessage(0x404, "ShowTrayMenu") ; enables left-click to show tray menu
 
 ;##############################################################################################
 ; Default values for writing INI
-sHotkeyString := "^+e"
+sShowHideHotkey := "^+e"
+sChangeWinHotkey := "^+w"
 bUseTransparency := true
 nTransparencyLevel := 50
 bUseClickThrough := true
@@ -67,11 +70,13 @@ IfNotExist %sIniFileName%
 {
 	bFirstRun := true
 	Gosub Write_INI ; subroutine in Read_Write_INI.ahk
-	sHotkeyString := "" ; cleared to enable hotkey read from file
+	sShowHideHotkey := "" ; cleared to enable hotkey read from file
+	sChangeWinHotkey := "" ; cleared to enable hotkey read from file
 	Gosub Settings ; subroutine in Settings.ahk
 } else {
 	bFirstRun := false
-	sHotkeyString := "" ; cleared to enable hotkey read from file
+	sShowHideHotkey := "" ; cleared to enable hotkey read from file
+	sChangeWinHotkey := "" ; cleared to enable hotkey read from file
 	bFromSettings := false
 	Gosub Read_INI ; subroutine in Read_Write_INI.ahk
 }

@@ -7,13 +7,13 @@ Change_Window:
 		Msgbox 48, Warning, Change Window not available.`nFinish current task before another can be executed.
 		return
 	}
-	Send !{Escape} ; makes previous window active so it's not the tray
+
 	bIsBusy := true
 	bWindowChosen := false
 	bCancelWindowChoice := false
 	Hotkey Space, Change_Window_HK1_Chosen, On
 	Hotkey Escape, Change_Window_HK2_Cancel, On
-	SplashTextOn, 300, 250, Choose Window,
+	SplashTextOn, 400, 250, Choose Window,
 		( LTrim
 			`nMake desired window active
 			and press Space Bar to select it,

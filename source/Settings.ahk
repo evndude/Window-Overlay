@@ -21,7 +21,7 @@ Settings:
 			Gui 1:Default
 			Gui Font, s11 bold
 			Gui -Resize -MaximizeBox
-			Gui Add, Text, x157 y14,   Main Settings ; x12
+			Gui Add, Text, x157 y14,   Main Settings
 			Gui Font, norm
 
 			Gui Add, Text, w360 x12 y+12, Show/Hide Hotkey
@@ -29,7 +29,10 @@ Settings:
 			Gui Add, Text, xp+122 cBlue gS_Launch_Hotkey_Ref, (Hotkey Help)
 			Gui Add, Text, xp+92 cBlue gS_Launch_Key_List, (Key List)
 			Gui Font, norm
-			Gui Add, Edit, w70 xp+95 yp-2 R1 vsHotkeyStringTemp, %sHotkeyString%
+			Gui Add, Edit, w70 xp+95 yp-2 R1 vsShowHideHotkeyTemp, %sShowHideHotkey%
+
+			Gui Add, Text, w360 x12 y+10, Change Window Hotkey
+			Gui Add, Edit, w70 xp+309 yp-2 R1 vsChangeWinHotkeyTemp, %sChangeWinHotkey%
 
 			Gui Add, Text, w360 x12 y+10, Use Transparency?
 			Gui Add, Checkbox, xp+349 Checked%bUseTransparency% vbUseTransparency
@@ -49,7 +52,7 @@ Settings:
 
 			if (bFirstRun == true) {
 				Gui Font, bold
-				Gui Add, Button, x122 y+20 Default gS_Save, &Save && Choose Window
+				Gui Add, Button, x122 y+14 Default gS_Save, &Save && Choose Window
 			}
 			else {
 				Gui Add, Text, w130 x12 y+16, Win X Pos
@@ -142,8 +145,9 @@ return
 ; "Save" button routine
 S_Save:
 	Gui Submit, NoHide
-	if (EnableHotkey(sHotkeyStringTemp,sHotkeyString,"Show_Or_Hide_Window") == "ERROR") ; function in Enable_Hotkey.ahk
-		; GUI can't be Saved without valid Hotkey
+	if (EnableHotkey(sShowHideHotkeyTemp,sShowHideHotkey,"Show_Or_Hide_Window") == "ERROR"
+			|| EnableHotkey(sChangeWinHotkeyTemp,sChangeWinHotkey,"Change_Window") == "ERROR") ; function in Enable_Hotkey.ahk
+		; GUI can't be Saved without valid hotkeys
 		return 
 
 	Gosub GuiClose
@@ -205,6 +209,7 @@ return
 S_EXE_Controls_Reposition:
 	GuiControlGet ControlPos, Pos, bUseEXECmdLine
 	GuiControlGet bUseEXECmdLine
+	WinGetPos,,,, nWinHeightTemp, %sGuiName%
 	if (bUseEXECmdLine == true) {
 		GuiControl Show, S_EXECmdStartLabel
 		GuiControl Show, sEXECmdStart
@@ -215,8 +220,8 @@ S_EXE_Controls_Reposition:
 		GuiControl Show, S_EXECmdHideLabel
 		GuiControl Show, sEXECmdHide
 		GuiControl Show, bUseEXECmdHide
-		ControlPosY := ControlPosY + 126
-		nGUIWinHeight := 626
+		ControlPosY := ControlPosY + 132
+		nWinHeightTemp += 102
 	} else {
 		GuiControl Hide, S_EXECmdStartLabel
 		GuiControl Hide, sEXECmdStart
@@ -228,11 +233,11 @@ S_EXE_Controls_Reposition:
 		GuiControl Hide, sEXECmdHide
 		GuiControl Hide, bUseEXECmdHide
 		ControlPosY := ControlPosY + 30
-		nGUIWinHeight := 529
+		nWinHeightTemp -= 102
 	}
 	GuiControl, Move, S_SaveButton, y%ControlPosY%
 	GuiControl, Move, S_CancelButton, y%ControlPosY%
-	WinMove %sGuiName%,,,,,%nGUIWinHeight%
+	WinMove %sGuiName%,,,,,%nWinHeightTemp%
 return
 
 ;##############################################################################################

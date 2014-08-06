@@ -5,7 +5,7 @@ About:
 	Gui 2:Default
 	Gui +AlwaysOnTop -Resize -MaximizeBox -MinimizeBox
 	Gui Font, s12 w400 bold
-	Gui Add, Text, x104, Window Overlay v1.0
+	Gui Add, Text, x104, Window Overlay v1.1
 	Gui Font, norm
 	Gui Add, Text, y+12 x15, This AutoHotKey script turns a window into
 	Gui Add, Text, y+4, an overlay by making it always on top of other

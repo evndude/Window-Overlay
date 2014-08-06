@@ -1,7 +1,8 @@
 ﻿;##############################################################################################
 ; Write settings to the ini file
 Write_INI:
-	IniWrite %sHotkeyString%, %sIniFileName%, Settings, Hotkey String
+	IniWrite %sShowHideHotkey%, %sIniFileName%, Settings, Show-Hide Hotkey
+	IniWrite %sChangeWinHotkey%, %sIniFileName%, Settings, Change Win Hotkey
 	IniWrite %bUseTransparency%, %sIniFileName%, Settings, Use Transparency
 	IniWrite %nTransparencyLevel%, %sIniFileName%, Settings, Transparency Level
 	IniWrite %bUseClickThrough%, %sIniFileName%, Settings, Use Click-Through
@@ -27,11 +28,18 @@ return
 ; Read settings from the ini file.
 Read_INI:
 	sErrorMsg := ""
-	IniRead sHotkeyStringTemp, %sIniFileName%, Settings, Hotkey String
-	if (sHotkeyStringTemp == "ERROR")
-		sErrorMsg := sErrorMsg "`nHotkey String"
+
+	IniRead sShowHideHotkeyTemp, %sIniFileName%, Settings, Show-Hide Hotkey
+	if (sShowHideHotkeyTemp == "ERROR")
+		sErrorMsg := sErrorMsg "`nShow-Hide"
 	else
-		EnableHotkey(sHotkeyStringTemp,sHotkeyString,"Show_Or_Hide_Window") ; function in Enable_Hotkey.ahk
+		EnableHotkey(sShowHideHotkeyTemp,sShowHideHotkey,"Show_Or_Hide_Window") ; function in Enable_Hotkey.ahk
+
+	IniRead sChangeWinHotkeyTemp, %sIniFileName%, Settings, Change Win Hotkey
+	if (sChangeWinHotkeyTemp == "ERROR")
+		sErrorMsg := sErrorMsg "`nChange Win Hotkey"
+	else
+		EnableHotkey(sChangeWinHotkeyTemp,sChangeWinHotkey,"Change_Window") ; function in Enable_Hotkey.ahk
  
 	IniRead bUseTransparency, %sIniFileName%, Settings, Use Transparency
 	if (bUseTransparency == "ERROR")
