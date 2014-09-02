@@ -23,10 +23,9 @@ Version    Date          Notes
 
 
 ## Screen Shots
-![Settings](https://raw.githubusercontent.com/evndude/evndude.github.io/master/Windows-Overlay_files/Settings.png)
+<img src="https://raw.githubusercontent.com/evndude/evndude.github.io/master/Windows-Overlay_files/Settings.png" alt="Settings screenshot" style="display: block; margin-left: auto; margin-right: auto;">
 
-![Toggle Window Visibility](https://raw.githubusercontent.com/evndude/evndude.github.io/master/Windows-Overlay_files/ToggleWindowVisibility.png)
-
+<img src="https://raw.githubusercontent.com/evndude/evndude.github.io/master/Windows-Overlay_files/ToggleWindowVisibility.png" alt="Toggle Window Visibility screenshot" style="display: block; margin-left: auto; margin-right: auto;">
 
 #### EXE Command Examples:
 EXE commands may need to be enclosed in quotes to work. Read the program's documentation to find out what (if any) command line switches are available, and how to format them.
