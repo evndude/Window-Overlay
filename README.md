@@ -1,15 +1,10 @@
 ## Window Overlay
 This is an AutoHotKey script that turns a window into an overlay by making it always on top of other windows. Options include mouse click-through, transparency, and maintaining the overlay's size and position.
 
-There are two configurable hotkeys: one for showing/hiding the overlay and one for changing the overlay window.
-
-Open the Settings from the tray menu and read the tooltips for more information about each option.
-
-To enable multiple overlay windows, run a copy of the script in another directory and with different hotkeys.
-
-There is also a tool to show or hide any window (including hidden) if something ever goes wrong.
+Open the Settings from the tray menu and read the tooltips for more information about each option. There are two configurable hotkeys: one for showing/hiding the overlay and one for changing the overlay window. To enable multiple overlay windows, run a copy of the script in another directory and with different hotkeys. There is also a tool included to show or hide any window (including hidden) if something ever goes wrong.
 
 Hosted on GitHub: http://github.com/evndude/Window-Overlay
+
 Released under MIT license. Copyright (c) 2014 Evan Casey.
 
 
@@ -28,7 +23,7 @@ Version    Date          Notes
 ![Toggle Window Visibility](https://raw.githubusercontent.com/evndude/evndude.github.io/master/Windows-Overlay_files/ToggleWindowVisibility.png)
 
 
-#### EXE Command Examples:
+## EXE Command Examples:
 EXE commands may need to be enclosed in quotes to work. Read the program's documentation to find out what (if any) command line switches are available, and how to format them.
 
 EXE commands enclosed in `'single'` or `"double"` quotation marks are saved to the INI file with the quotes substituted with `<single>` or `<<double>>` angle brackets because AutoHotKey automatically removes them when reading variables from an INI file.
